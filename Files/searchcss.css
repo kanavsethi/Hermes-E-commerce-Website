@@ -1,0 +1,401 @@
+@font-face
+{
+    font-family:WorkSans-Thin;
+    src: url (WorkSans-Thin.ttf);
+}
+*{
+    box-sizing: border-box;
+    font-family: WorkSans-Thin;
+}
+body
+{
+    margin:0;
+    background: white;
+}
+
+header 
+{
+    background: linear-gradient(to right, #AD1457,#6A1B9A);
+    color: white;
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    z-index: 1;
+    
+}
+header span
+{
+    display: inline-block;
+    margin-left: 5px;
+}
+header input[type=text] 
+{
+    display: inline-block;
+    width: 160px;
+    margin: 27px 5px 0 10px;
+    border: 2px solid orangered;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 2px 3px; 
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    padding: 8px 20px 8px 40px;
+    transition: width 0.5s ease-in-out;
+}
+header input[type=submit] 
+{
+    margin-top: 32px;
+    color: white;
+    font-size: 16px;
+    background-color: orangered;
+    width: 90px;
+    height: 30px;
+    border: none;
+    display: inline-block;
+}
+
+
+
+header input[type=text]:focus 
+{
+    width: 25%;
+}
+header .button
+{
+    color: white;
+    font-size: 16px;
+    background-color: orangered;
+    width: 90px;
+    height: 30px;
+    border: none;
+    float: right;
+    margin: -60px 20px 0 0;
+}
+header .button:hover,input[type=submit]:hover
+{
+    background-color: #ff8566;
+     
+}
+header img 
+{
+    display: block;
+    width: 30%;
+    height: 100%;
+   /* border:3px solid orangered;*/
+    margin: auto;
+    margin-top: -113px;
+    padding-top: 10px;
+    
+}
+
+   .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover{
+    color: orangered;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+} 
+            label
+            {
+                text-transform:uppercase;
+                font-weight:bolder;
+                letter-spacing:1px;
+                font-size:15px;
+            } 
+            .content
+            {                
+               
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                margin-top: 100px;
+            }
+            .content::-webkit-scrollbar
+            {
+                display: none;
+            }            
+            .item
+            {
+                float: left;
+                margin: 1%;
+                max-width: 180px;
+                max-height: 300px;
+                min-width: 180px;
+                min-height: 300px;
+                transition: box-shadow 0.5;
+            }
+            .item:hover
+            {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+            .image_container 
+            {
+                position:sticky;
+                float: left;
+                width: 180px;
+                height: 240px;
+                padding: 0%;
+                background-color:#ffffff;
+            }
+            .item_image 
+            {
+                opacity: 1;
+                display: block;
+                width: 100%;
+                height: 240px;
+                transition: .5s ease;
+            }
+            .middle 
+            {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: #ffe6ff;
+                overflow: hidden;
+                width: 100%;
+                height: 0;
+                transition: .5s ease;
+            }
+            .image_container:hover .middle 
+            {
+                height: 50px;
+            }
+            .text 
+            {
+                color: white;
+                text-align: center;
+                font-size: 16px;
+                padding: 1px;
+            }
+            .item_details
+            {
+                margin: auto;
+                width: 100%;
+                height: 80px;
+            }
+            .item_name
+            {
+                width: 100%;
+                text-align: center;
+            }
+            .page
+            {
+                text-align: center;
+            }
+            .pagination 
+            {
+                display: inline-block;
+                margin: auto;
+            }
+            .pagination a 
+            {
+                color: black;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+            }
+            .pagination a.active 
+            {
+                background: linear-gradient(to right, #AD1457,#6A1B9A);
+                color: white;
+                border-radius: 5px;
+            }
+            .pagination a:hover:not(.active) 
+            {
+                background-color: #ddd;
+                border-radius: 5px;
+            }
+            .footer
+            {
+                background-color:#ffe6ff;
+                width: 100%;
+                height: auto;
+                clear: both;
+                position: relative;
+                z-index: 0;
+                margin-top: 10%;
+                padding: 2% 15% 5% 15%;                
+            }
+            .footer_text 
+            {               
+                column-count: 3;   
+                column-gap: 40px;                
+                column-rule-style: solid;             
+                column-rule-width: 1px;               
+                column-rule-color: lightblue;
+            }
+            .icons
+            {
+                width: 100%;
+                height: auto;
+                b
+                padding: 1px;
+            }
+            .icon_container
+            {
+                width: 100%;
+                height: auto;
+                b
+                padding: 1px;
+                text-align: left;
+            }
+            .icon
+            {
+                width: 50px;
+                height: 50px;
+                margin: 0px 2px 0px 0px;             
+            }
+            .social
+            {
+                width: 100%;
+                height: 70px;
+                display: block;                
+                margin:0 0 0 0;                
+            }
+            .social_icon
+            {
+                width: 50px;
+                height: 50px;
+                margin: 0px 2px 0px 3px;
+            }
+            .cart_icon
+            {
+                width: 38px;
+                height: 38px;
+                margin: 0px 2px 0px 3px;
+            }
+            ul 
+            {
+                list-style-type: none;
+            }
+            li
+            {
+                float: left;
+            }
+            .rights
+            {
+                padding: 1px;
+                width: 100%;
+                height: 70px;
+                margin: 0px 0px 0px 0px;
+            }
+
+.footer 
+{
+    background-color:black;
+    width: 100%;
+    height: 210px;
+    /*border: 2px solid green;*/
+    position: relative;
+    bottom: 0;
+    top: 80px;
+    color: white;
+    padding-left: 3px;
+}
+.column
+{
+    width:33.1%;
+   /* border: 2px solid orangered;*/
+    display: inline-block;
+    padding-top: -40px;
+    padding-left: 20px;
+    height: 205px;
+}
+.column:first-child
+{
+    margin-top: -25px;
+}
+.column:first-child img
+{
+    height: 30px;
+    width: 30px;
+    margin-left: 10px;
+}
+
+.column:nth-child(2)
+{
+    position: absolute;
+    top: 0;
+    margin-left: 3px;
+}
+.column:nth-child(2) p
+{
+    width: 70%;
+}
+.column:nth-child(2) img
+{
+    position: absolute;
+    height: 70px;
+    width: 90px;
+    display: block;
+}
+.column:nth-child(2) img:nth-last-child(2)
+{
+    top:110px;
+    right: 20px;
+}
+.column:nth-child(2) img:last-child
+{
+    top:20px;
+    right: 20px;
+}
+
+
+.column:last-child
+{
+    position: absolute;
+    top: 0;
+    margin-left: 451px;
+}
+.subscribe
+{
+    width: 50%;
+    border: 2px solid orangered;
+    padding: 6px 20px 4px 10px;
+    margin-left: 40px;
+    display: inline-block;
+}
+.subscribe_btn
+{
+   color: white;
+    font-size: 16px;
+    background-color: orangered;
+    width: 90px;
+    height: 30px;
+    border: none;
+    display: inline-block;
+}
+
+.subscribe_btn:hover
+{
+     background-color: #ff8566;
+}

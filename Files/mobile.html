@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mobile</title>
+        <link rel="icon" href="icon.png">        
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            @font-face 
+            {
+                font-family: WorkSans-Thin;
+                src: url(WorkSans-Thin.ttf);
+            }
+            *{
+                font-family: WorkSans-Thin;
+                color: black;
+            }
+            body
+            {
+                padding: 0;
+                margin: 0;                
+            }
+            .header
+            {
+                z-index: 1;
+                background: linear-gradient(to right, #AD1457,#6A1B9A);
+                width: 100%;
+                height:15%;
+                position: fixed;
+                top: 0;
+                left: 0;
+            }
+            .header_logo
+            {
+                position: fixed;
+                width: 18%;
+                height: 8%;
+                float: left;
+                margin: 2% 0 0 15%;                
+            }
+            .body
+            {
+                padding: 10% 15% 0% 15%;
+                margin-bottom: 50px;
+            }            
+            .side_menu
+            {
+                float: left;
+                width: 20%;
+                height: auto;
+                border-right: 4px solid #ffe6ff;
+                overflow: scroll;                
+            }
+            .content::-webkit-scrollbar
+            {
+                display: none;
+            }
+            .side_menu::-webkit-scrollbar
+            {
+                display: none;
+            }
+            .brand
+            {
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+                padding-bottom: 10px;
+            }
+            .price
+            {
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.08);            
+                padding-bottom: 10px;
+            }
+            .category
+            {
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.08);            
+                padding-bottom: 10px;
+            }
+            .single_check_option
+            {
+                width:100%;
+                height: 25px;
+                margin-top: 5px;
+                transition: box-shadow 0.5;
+            }
+            .single_check_option:hover
+            {
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+            }
+            .check_box
+            {
+                width:15%;
+                height: 100%;
+                float: left;
+            }
+            .label
+            {
+                width: 70%;
+                height: 100%;
+                padding: 2px 0px 0px 0px;
+                float: right;
+            }
+            .switch 
+            {
+                position: relative;
+                display: inline-block;
+                width: 50px;
+                height: 25px;
+            }
+            .switch input
+            {
+                display:none;
+            }
+            .slider 
+            {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ffe6ff;
+                transition: .5s;
+            }
+            .slider:before 
+            {
+                position: absolute;
+                content: "";
+                height: 20px;
+                width: 20px;
+                left: 5px;
+                bottom: 2.5px;
+                background-color: #76ffff;
+                transition: .5s;
+            }
+            input:checked + .slider 
+            {
+                background: linear-gradient(to right, #AD1457,#6A1B9A);
+            }
+            input:focus + .slider
+            {
+                box-shadow: 0 0 1px #2196F3;
+            }
+            input:checked + .slider:before 
+            {
+                transform: translateX(20px);
+            }
+            .side_menu::-webkit-scrollbar
+            {
+                display: none;
+            }            
+            label
+            {
+                
+                text-transform:uppercase;
+                font-weight:bolder;
+                letter-spacing:1px;
+                font-size:15px;
+            } 
+            .content
+            {                
+                float: right;
+                width: 75%;
+                height: 80%;
+                overflow: scroll;
+            }
+            .content::-webkit-scrollbar
+            {
+                display: none;
+            }            
+            .item
+            {
+                float: left;
+                margin: 1%;
+                width: 23%;
+                height: 40%;
+                transition: box-shadow 0.5;
+            }
+            .item:hover
+            {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+            .image_container 
+            {
+                position:sticky;
+                float: left;
+                width: 100%;
+                height: auto;
+                padding: 0%;
+                background-color:#ffffff;
+            }
+            .item_image 
+            {
+                opacity: 1;
+                display: block;
+                width: 100%;
+                height: auto;
+                transition: .5s ease;
+            }
+            .middle 
+            {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: #ffe6ff;
+                overflow: hidden;
+                width: 100%;
+                height: 0;
+                transition: .5s ease;
+            }
+            .image_container:hover .middle 
+            {
+                height: 20%;
+            }
+            .text 
+            {
+                color: white;
+                text-align: center;
+                font-size: 16px;
+                padding: 1px;
+            }
+            .item_details
+            {
+                margin: auto;
+                width: 100%;
+                height: auto;
+            }
+            .item_name
+            {
+                width: 100%;
+                text-align: center;
+            }
+            .page
+            {
+                text-align: center;
+            }
+            .pagination 
+            {
+                display: inline-block;
+                margin: auto;
+            }
+            .pagination a 
+            {
+                color: black;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+            }
+            .pagination a.active 
+            {
+                background: linear-gradient(to right, #AD1457,#6A1B9A);
+                color: white;
+                border-radius: 5px;
+            }
+            .pagination a:hover:not(.active) 
+            {
+                background-color: #ddd;
+                border-radius: 5px;
+            }
+            .footer
+            {
+                background-color:#ffe6ff;
+                width: 100%;
+                height: auto;
+                clear: both;
+                position: relative;
+                z-index: 10;
+                margin-top: 90%;
+                padding: 2% 15% 5% 15%;                
+            }
+            .footer_text 
+            {               
+                column-count: 3;   
+                column-gap: 40px;                
+                column-rule-style: solid;                
+                column-rule-width: 1px;                
+                column-rule-color: lightblue;
+            }
+            .icons
+            {
+                width: 100%;
+                height: auto;
+                b
+                padding: 1px;
+            }
+            .icon_container
+            {
+                width: 100%;
+                height: auto;
+                b
+                padding: 1px;
+                text-align: left;
+            }
+            .icon
+            {
+                width: 50px;
+                height: 50px;
+                margin: 0px 2px 0px 0px;                
+            }
+            .social
+            {
+                width: 100%;
+                height: 70px;
+                display: block;                
+                margin:0 0 0 0;                
+            }
+            .social_icon
+            {
+                width: 50px;
+                height: 50px;
+                margin: 0px 2px 0px 3px;
+            }
+            .cart_icon
+            {
+                width: 38px;
+                height: 38px;
+                margin: 0px 2px 0px 3px;
+            }
+            ul 
+            {
+                list-style-type: none;
+            }
+            li
+            {
+                float: left;
+            }
+            .rights
+            {
+                padding: 1px;
+                width: 100%;
+                height: 70px;
+                margin: 0px 0px 0px 0px;
+            }
+    </style>   
+    </head>
+    <body>
+        <div class="header"><img class="header_logo" src="hermes_our_logo.png"></div>
+        <div class="body">
+            <h2 style="margin: 0 0 5px 25%">Mobile</h2>
+            <div class="side_menu">
+            <div class="brand">
+                <h2 style="margin-bottom: 0px;">Brand</h2>
+                <h3 style="margin-top: 0px; font-size: 12px">Choose your preferences</h3>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Moto">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Moto"><label for="Moto">Moto</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="OnePlus">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="OnePlus"><label for="OnePlus">OnePlus</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Samsung">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Samsung"><label for="Samsung">Samsung</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Redmi">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Redmi"><label for="Redmi">Redmi</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Oppo">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Oppo"><label for="Oppo">Oppo</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Nokia">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Nokia"><label for="Nokia">Nokia</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Micromax">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Micromax"><label for="Micromax">Micromax</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Blackberry">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Blackberry"><label for="Blackberry">Blackberry</label></div>
+                </div>
+            </div>
+            <div class="price">
+                <h2 style="margin-bottom: 0px;">Price</h2>
+                <h3 style="margin-top: 0px; font-size: 12px">Choose your preferences</h3>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Below 5000">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Below 5000"><label for="Below 5000">Below 5000</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="5000-10000">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="5000-10000"><label for="5000-10000">5000-10000</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="10000-15000">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="10000-15000"><label for="10000-15000">10000-15000</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="15000-20000">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="15000-20000"><label for="15000-20000">15000-20000</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Above 20000">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Above 20000"><label for="Above 20000">Above 20000</label></div>
+                </div> 
+            </div>
+            <div class="category">
+                <h2 style="margin-bottom: 0px;">Category</h2>
+                <h3 style="margin-top: 0px; font-size: 12px">Choose your preferences</h3>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Smartphone">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Smartphone"><label for="Smartphone">Smartphone</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Feature-Phone">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Feature-Phone"><label for="Feature-Phone">Feature Phone</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Querty">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Querty"><label for="Querty">Querty</label></div>
+                </div>
+            </div>
+            <div class="ram">
+                <h2 style="margin-bottom: 0px;">RAM</h2>
+                <h3 style="margin-top: 0px; font-size: 12px">Choose your preferences</h3>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Below 1GB">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Below 1GB"><label for="Below 1GB">Below 1GB</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="1GB-2GB">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="1GB-2GB"><label for="1GB-2GB">1GB-2GB</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Above 2GB">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Above 2GB"><label for="Above 2GB">Above 2GB</label></div>
+                </div>
+            </div>
+                <div class="storage">
+                <h2 style="margin-bottom: 0px;">Storage</h2>
+                <h3 style="margin-top: 0px; font-size: 12px">Choose your preferences</h3>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Below 1GB">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Below 1GB"><label for="Below 1GB">Below 1GB</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="1GB-16GB">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="1GB-16GB"><label for="1GB-16GB">1GB-16GB</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="16GB-32GB">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="16GB-32GB"><label for="16GB-32GB">16GB-32GB</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Above 32GB">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Above 32GB"><label for="Above 32GB">Above 32GB</label></div>
+                </div>
+            </div>
+        </div>            
+            <div class="content">
+                <div>
+                    <div class="item">
+                        
+                        <div class="image_container">
+                                <img src="tshirt.jpg" alt="Puma T-Shirt" class="item_image">
+                          <div class="middle">
+                            <div class="text"><button style="width: 100%;height: 100%;background-color: #ffe6ff;"><img class="cart_icon" src="cartr.png"></button></div>
+                          </div>
+                        </div>
+                        <div class="item_details">
+                            <div class="item_name">
+                                <strong style="margin-bottom: 0px; margin: auto;">Company</strong><p style="margin-bottom: 0px;margin: auto;">Model</p><strike style="margin-top: 0px; margin: auto;">Price</strike><strong style="margin-top: 0px; margin: auto;"> Offered</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer_text">
+                <h2 style="column-span: all; text-align: center;">Shop All Types of Mobile Phones in India Online</h2>
+                <p>As far as mobiles are concerned, the options available for the buyers are multitudinous. From mobile phones colours to specifications to brands, you can simply put forth your choices and you will have phone models as per your requirements. However, searching for the perfect mobile phone through thousands of mobiles can be tedious. Hermes made shopping for mobile phones online easier by providing filters; use them to narrow down your search on the basis of connectivity, operating system, internal memory, SIM, processor, camera, screen size, battery capacity, customer ratings and reviews, etc. Simply check the desired values and you will have the best matching results on your computer screen. Isn't the whole process of online shopping for mobiles exciting? </p>
+                <h3>Smartphones: The Choice of Today's Generation!</h3>
+                <p>In today's fast-paced age, people are on the go all the time. They need a device like smartphone that helps them carry out day-to-day tasks in a jiffy without compromising with their personal routine. You can also make your life easier by buying a smartphone, which is packed with powerful features, employs cutting-edge technology, and doesn't burn a hole in your pocket. The range of smartphones available at Hermes is such that it meets the varying requirements of our customers hailing from different parts of the country. For instance, you can buy smartphones that run on different operating systems like Android, iOS, Windows, Blackberry, Firefox, etc. You can choose smartphones with internal memory capacities like 16 GB, 32 GB, 64 GB, and so on to store your pictures, videos, and contacts without running out of space. If you like a smartphone with lesser storage capacity, use microSD cards to expand its memory. Since mobile phones are used for clicking beautiful pictures, most of the smartphones come equipped with high resolution front and rear cameras. So, click and edit selfies and share them on social networking sites using your smartphone.The long battery life ensures that these mobile phones can be used for hours, while the fast processors allow you to multitask. Phones equipped with the dual SIM facility are available too. Connect your new mobile to 2G, 3G and Wi-Fi networks and surf the internet anytime, anywhere.</p>
+                <h3>Feature Mobile Phones for One & All</h3>
+                <p>Those not comfortable using a touch screen phone can go for a feature phone. Available in the shape of a bar, feature phones are equipped with keypads and a display screen. These phones are easy to operate and the batteries are quite powerful. The keypad of a feature phone is placed below the display screen. Most of the feature phones being launched in the market have a dual SIM feature, are compact, and do not weigh much at all. Feature phones like any other phone are packed with a bevy of features like an FM radio, Bluetooth connectivity, a music player, an alarm clock, etc.
+                <br>
+               </p><br>
+                <div class="icons">
+                    <div class="icon_container">
+                        <img class="icon" src="original.png">
+                        <p style="float: right; width: 80%; margin:1px 0px 1px 2px;"><strong>100% ORIGINAL </strong>guarantee for all products at our store</p>
+                    </div>
+                    <div class="icon_container">
+                        <img class="icon" src="30day.png">
+                        <p style="float: right; width: 80%; margin:1px 0px 1px 2px;"><strong>Return within 30days </strong>of placing your order</p>
+                    </div>
+                    <div class="icon_container">
+                        <img class="icon" src="free%20delivery.png">
+                        <p style="float: right; width: 80%; margin:1px 0px 1px 2px;"><strong>Get free delivery </strong>for every order above Rs.1199</p>
+                    </div>
+                </div>
+            </div>
+            <div class="social">
+                <ul>
+                    <li><strong><br>Stay Connected </strong></li>
+                    <li><a href="https://www.facebook.com/" target="_blank"><img class="social_icon" src="fb.png"></a></li>
+                    <li><a href="https://www.instagram.com/?hl=en" target="_blank"><img class="social_icon" src="insta.png"></a></li>
+                    <li><a href="https://twitter.com/login" target="_blank"><img class="social_icon" src="twi.png"></a></li>
+                    <li><a href="https://in.pinterest.com/" target="_blank"><img class="social_icon" src="pin.png"></a></li>
+                </ul>
+            </div>
+            <div class="rights"><p style="float: left;">In case of any concern, <strong>Contact Us</strong></p><p style="float: right;">© 2017 Hermes. All rights reserved.</p></div>
+        </div>
+    </body>
+</html>

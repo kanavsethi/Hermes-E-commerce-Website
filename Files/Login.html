@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="material_used_only_for_login_page.css">
+        <link rel="icon" href="icon.png">
+        <style>
+            body
+            {
+                background: linear-gradient(to right, #AD1457,#6A1B9A);
+            }
+            .mdc-card
+            {
+                
+                max-height:550px;
+                max-width: 600px;
+                min-height:550px;
+                min-width: 600px;
+                margin: auto;
+                margin-top: 8%;
+                margin-bottom: 8%;
+                padding: 40px;
+                background-color: white;
+            }
+            .mdc-textfield
+            {
+                margin-left: 10%;
+                margin-right: 10%;
+            }
+            #animation
+            {
+                animation-name: anim;
+                animation-duration: 6s;
+                width: 0%;
+                height: auto;
+                margin: auto;
+            }
+            #animation_video
+            {
+                margin: auto;
+                width: 100%;
+                height: auto;
+                
+            }
+            @keyframes anim
+            {
+                from {width: 80%;}
+                to {width: 0%;}
+            }
+            @keyframes an
+            {
+                from {display: block;}
+                to {display: none;}
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div>
+            <div id="animation"><video id="animation_video" src="ani.mp4" autoplay></video></div>
+            <div class="mdc-card">
+                <section style="margin: auto; margin-top: 10px;padding-bottom: 60px">
+                    <img src="hermes_our_logo.png" width="40%" height="15%">
+                </section>
+                <section class="mdc-card__primary" style="border-left-style: solid;border-left-width: 10px;border-left-color: deeppink">
+                    <h1 class="mdc-card__title mdc-card__title--large" style="margin-left: 1px">Sign In</h1>
+                    <h3 class="mdc-card__subtitle" style="margin-left: 1px">
+                        You are signing in as 
+                        <select class="mdc-select" name="type">
+                            <option value="user" selected>User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </h3>
+                </section>
+                <section>
+                    <div class="mdc-textfield" data-mdc-auto-init="MDCTextfield" style="margin-top: 30px;margin-left: 25px">
+                        <input class="mdc-textfield__input" type="text" id="user" placeholder="Username" style="width: 470px">
+                        <br><br><br>
+                        <input class="mdc-textfield__input" type="password" id="pass" placeholder="Password" style="width: 470px">
+                        <br><br><br>
+                        <button class="mdc-button mdc-button--raised mdc-button--accent"  style="margin-left: 400px;background-color: deeppink" >Login</button>
+                    </div>
+                </section>
+                <section class="mdc-card__actions">
+                    <button class="mdc-button mdc-button--compact mdc-card__action">Need an account?</button>
+                </section>
+            </div>
+            
+        </div>
+    </body>
+</html>

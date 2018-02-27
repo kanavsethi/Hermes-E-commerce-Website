@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bags</title>
+        <link rel="icon" href="icon.png">        
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            @font-face 
+            {
+                font-family: WorkSans-Thin;
+                src: url(WorkSans-Thin.ttf);
+            }
+            *{
+                font-family: WorkSans-Thin;
+                color: black;
+            }
+            body
+            {
+                padding: 0;
+                margin: 0;                
+            }
+            .header
+            {
+                z-index: 1;
+                background: linear-gradient(to right, #AD1457,#6A1B9A);
+                width: 100%;
+                height:15%;
+                position: fixed;
+                top: 0;
+                left: 0;
+            }
+            .header_logo
+            {
+                position: fixed;
+                width: 18%;
+                height: 8%;
+                float: left;
+                margin: 2% 0 0 15%;                
+            }
+            .body
+            {
+                padding: 10% 15% 0% 15%;
+                margin-bottom: 50px;
+            }            
+            .side_menu
+            {
+                float: left;
+                width: 20%;
+                height: auto;
+                border-right: 4px solid #ffe6ff;
+                overflow: scroll;                
+            }
+            .content::-webkit-scrollbar
+            {
+                display: none;
+            }
+            .side_menu::-webkit-scrollbar
+            {
+                display: none;
+            }
+            .brand
+            {
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+                padding-bottom: 10px;
+            }
+            .price
+            {
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.08);            
+                padding-bottom: 10px;
+            }
+            .single_check_option
+            {
+                width:100%;
+                height: 25px;
+                margin-top: 5px;
+                transition: box-shadow 0.5;
+            }
+            .single_check_option:hover
+            {
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+            }
+            .check_box
+            {
+                width:15%;
+                height: 100%;
+                float: left;
+            }
+            .label
+            {
+                width: 70%;
+                height: 100%;
+                padding: 2px 0px 0px 0px;
+                float: right;
+            }
+            .switch 
+            {
+                position: relative;
+                display: inline-block;
+                width: 50px;
+                height: 25px;
+            }
+            .switch input
+            {
+                display:none;
+            }
+            .slider 
+            {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ffe6ff;
+                transition: .5s;
+            }
+            .slider:before 
+            {
+                position: absolute;
+                content: "";
+                height: 20px;
+                width: 20px;
+                left: 5px;
+                bottom: 2.5px;
+                background-color: #76ffff;
+                transition: .5s;
+            }
+            input:checked + .slider 
+            {
+                background: linear-gradient(to right, #AD1457,#6A1B9A);
+            }
+            input:focus + .slider
+            {
+                box-shadow: 0 0 1px #2196F3;
+            }
+            input:checked + .slider:before 
+            {
+                transform: translateX(20px);
+            }
+            .side_menu::-webkit-scrollbar
+            {
+                display: none;
+            }            
+            label
+            {
+                
+                text-transform:uppercase;
+                font-weight:bolder;
+                letter-spacing:1px;
+                font-size:15px;
+            } 
+            .content
+            {                
+                float: right;
+                width: 75%;
+                height: 80%;
+                overflow: scroll;
+            }
+            .content::-webkit-scrollbar
+            {
+                display: none;
+            }            
+            .item
+            {
+                float: left;
+                margin: 1%;
+                width: 23%;
+                height: 40%;
+                transition: box-shadow 0.5;
+            }
+            .item:hover
+            {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+            .image_container 
+            {
+                position:sticky;
+                float: left;
+                width: 100%;
+                height: auto;
+                padding: 0%;
+                background-color:#ffffff;
+            }
+            .item_image 
+            {
+                opacity: 1;
+                display: block;
+                width: 100%;
+                height: auto;
+                transition: .5s ease;
+            }
+            .middle 
+            {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: #ffe6ff;
+                overflow: hidden;
+                width: 100%;
+                height: 0;
+                transition: .5s ease;
+            }
+            .image_container:hover .middle 
+            {
+                height: 20%;
+            }
+            .text 
+            {
+                color: white;
+                text-align: center;
+                font-size: 16px;
+                padding: 1px;
+            }
+            .item_details
+            {
+                margin: auto;
+                width: 100%;
+                height: auto;
+            }
+            .item_name
+            {
+                width: 100%;
+                text-align: center;
+            }
+            .page
+            {
+                text-align: center;
+            }
+            .pagination 
+            {
+                display: inline-block;
+                margin: auto;
+            }
+            .pagination a 
+            {
+                color: black;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+            }
+            .pagination a.active 
+            {
+                background: linear-gradient(to right, #AD1457,#6A1B9A);
+                color: white;
+                border-radius: 5px;
+            }
+            .pagination a:hover:not(.active) 
+            {
+                background-color: #ddd;
+                border-radius: 5px;
+            }
+            .footer
+            {
+                background-color:#ffe6ff;
+                width: 100%;
+                height: auto;
+                clear: both;
+                position: relative;
+                z-index: 10;
+                margin-top: 90%;
+                padding: 2% 15% 5% 15%;                
+            }
+            .footer_text 
+            {               
+                column-count: 3;   
+                column-gap: 40px;                
+                column-rule-style: solid;                
+                column-rule-width: 1px;                
+                column-rule-color: lightblue;
+            }
+            .icons
+            {
+                width: 100%;
+                height: auto;
+                b
+                padding: 1px;
+            }
+            .icon_container
+            {
+                width: 100%;
+                height: auto;
+                b
+                padding: 1px;
+                text-align: left;
+            }
+            .icon
+            {
+                width: 50px;
+                height: 50px;
+                margin: 0px 2px 0px 0px;                
+            }
+            .social
+            {
+                width: 100%;
+                height: 70px;
+                display: block;                
+                margin:0 0 0 0;                
+            }
+            .social_icon
+            {
+                width: 50px;
+                height: 50px;
+                margin: 0px 2px 0px 3px;
+            }
+            .cart_icon
+            {
+                width: 38px;
+                height: 38px;
+                margin: 0px 2px 0px 3px;
+            }
+            ul 
+            {
+                list-style-type: none;
+            }
+            li
+            {
+                float: left;
+            }
+            .rights
+            {
+                padding: 1px;
+                width: 100%;
+                height: 70px;
+                margin: 0px 0px 0px 0px;
+            }
+    </style>   
+    </head>
+    <body>
+        <div class="header"><img class="header_logo" src="hermes_our_logo.png"></div>
+        <div class="body">
+            <h2 style="margin: 0 0 5px 25%">Bags</h2>
+            <div class="side_menu">
+            <div class="brand">
+                <h2 style="margin-bottom: 0px;">Brand</h2>
+                <h3 style="margin-top: 0px; font-size: 12px">Choose your preferences</h3>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Tommy-Hilfiger">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Tommy-Hilfiger"><label for="Tommy-Hilfiger">Tommy Hilfiger</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Adidas">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Adidas"><label for="Adidas">Adidas</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Vans">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Vans"><label for="Vans">Vans</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Nike">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Nike"><label for="Nike">Nike</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Under-Armour">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Under-Armour"><label for="Under-Armour">Under Armour</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="AT">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="AT"><label for="AT">AT</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Puma">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Puma"><label for="Puma">Puma</label></div>
+                </div>
+            </div>
+            <div class="price">
+                <h2 style="margin-bottom: 0px;">Price</h2>
+                <h3 style="margin-top: 0px; font-size: 12px">Choose your preferences</h3>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Below 1000">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Below 1000"><label for="Below 1000">Below 1000</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="1000-2000">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="1000-2000"><label for="1000-2000">1000-2000</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="2000-3000">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="2000-3000"><label for="2000-3000">2000-3000</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="3000-4000">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="3000-4000"><label for="3000-4000">3000-4000</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Above 4000">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Above 4000"><label for="Above 4000">Above 4000</label></div>
+                </div> 
+            </div>
+            <div class="brand">
+                <h2 style="margin-bottom: 0px;">Category</h2>
+                <h3 style="margin-top: 0px; font-size: 12px">Choose your preferences</h3>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Messenger">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Messengerr"><label for="Messenger">Messenger</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Backpack">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Backpack"><label for="Backpack">Backpack</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Drawstring">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Drawstring"><label for="Drawstring">Drawstring</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Duffle">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Duffle"><label for="Duffle">Duffle</label></div>
+                </div>
+            </div>
+        </div>
+            
+            <div class="content">
+                <div>
+                    <div class="item">
+                        <div class="image_container">
+                          <img src="tshirt.jpg" alt="Puma T-Shirt" class="item_image">
+                          <div class="middle">
+                            <div class="text"><button style="width: 100%;height: 100%;background-color: #ffe6ff;"><img class="cart_icon" src="cartr.png"></button></div>
+                          </div>
+                        </div>
+                        <div class="item_details">
+                            <div class="item_name">
+                                <strong style="margin-bottom: 0px; margin: auto;">Company</strong><p style="margin-bottom: 0px;margin: auto;">Model</p><strike style="margin-top: 0px; margin: auto;">Price</strike><strong style="margin-top: 0px; margin: auto;"> Offered</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!--<div class="page">
+                    <div class="pagination">
+                        <a href="#">&laquo;</a>
+                        <a href="#"  class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#">6</a>
+                        <a href="#">&raquo;</a>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer_text">
+                <h2 style="column-span: all; text-align: center;">BUY BAGS FOR WOMEN & MEN</h2>
+                <h3>BAGS TO LEND A STYLISH APPEAL TO YOUR OUTFITS</h3>
+                <p>Get designer carry-alls at Myntra to make a glamorous addition to your bag collection. Find edgy shoulder bags in fun prints to pep up your college ensemble. Dress for college in a black T-shirt paired with dark blue jeans. Jazz up your simple outfit with a shoulder bag and a pair of red open-toe sandals. Look ravishing on a lunch date with your beau, wearing a dainty white dress. Accessorise your hair with a diamond-studded hairband and carry an oversized maroon purse to add a sophisticated touch to your look. Ladies, pick flattering handbags to carry your keys, mobile, and make-up to office. Dress for work in a peach blouse paired with a black skirt. Raise the style bar at your office with a rose-gold toned watch and an eye-catching orange handbag.</p>
+                <h3>BAGS - FOR THE FASHION-FORWARD MEN</h3>
+                <p>Get sleek and smart bags to carry your tablets, files, and other necessities in style. Accessorise your formal shirts and trousers with leather laptop bags for a classy appearance at office. Dress for an outstation client meeting in a crisp white button-down shirt paired with a patterned navy tie. Pack for your overnight business trip with a trolley duffle bag to comfortably carry your luggage while travelling. Sport a relaxed look at the gym by wearing a navy hooded T-shirt teamed with grey track pants. Pick trendy sports bags to help carry your gym equipment around. Bag the title of the best dressed guy at college by pairing your T-shirts and denims with printed backpacks in vibrant colours. Don a white polo T-shirt teamed with dark-dyed denims for your evening coaching classes. Accessorise with a yellow backpack and neon canvas shoes for a unique and quirky look.</p>
+                <h3>STEP UP YOUR BAGS GAME</h3>
+                <p>Add panache to your everyday outfits with the choicest selection of designer bags at Myntra. Guys, meet friends over lunch wearing checked shirts teamed with your statement jeans. Add a cool vibe to your casual outfit with hip duffle bags in rugged suede, and canvas. Girls, nail a perfect look for college by pairing your kurtis or T-shirts with contrasting shoulder bags. Dress for your best friend's birthday party in a fuchsia jumpsuit. Accesorise with a pearly-hued bib necklace and a beaded cuff-bracelet to sport a chic look. Take your pick from the adorable sling bags at Myntra to add icing to your party ensemble. Buy bags that suit your personal style and jazz up your outfits in a snap!
+                <br>
+               </p><br>
+                <div class="icons">
+                    <div class="icon_container">
+                        <img class="icon" src="original.png">
+                        <p style="float: right; width: 80%; margin:1px 0px 1px 2px;"><strong>100% ORIGINAL </strong>guarantee for all products at our store</p>
+                    </div>
+                    <div class="icon_container">
+                        <img class="icon" src="30day.png">
+                        <p style="float: right; width: 80%; margin:1px 0px 1px 2px;"><strong>Return within 30days </strong>of placing your order</p>
+                    </div>
+                    <div class="icon_container">
+                        <img class="icon" src="free%20delivery.png">
+                        <p style="float: right; width: 80%; margin:1px 0px 1px 2px;"><strong>Get free delivery </strong>for every order above Rs.1199</p>
+                    </div>
+                </div>
+            </div>
+            <div class="social">
+                <ul>
+                    <li><strong><br>Stay Connected </strong></li>
+                    <li><a href="https://www.facebook.com/" target="_blank"><img class="social_icon" src="fb.png"></a></li>
+                    <li><a href="https://www.instagram.com/?hl=en" target="_blank"><img class="social_icon" src="insta.png"></a></li>
+                    <li><a href="https://twitter.com/login" target="_blank"><img class="social_icon" src="twi.png"></a></li>
+                    <li><a href="https://in.pinterest.com/" target="_blank"><img class="social_icon" src="pin.png"></a></li>
+                </ul>
+            </div>
+            <div class="rights"><p style="float: left;">In case of any concern, <strong>Contact Us</strong></p><p style="float: right;">© 2017 Hermes. All rights reserved.</p></div>
+        </div>
+    </body>
+</html>

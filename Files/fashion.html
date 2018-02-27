@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mobile</title>
+        <link rel="icon" href="icon.png">        
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            @font-face 
+            {
+                font-family: WorkSans-Thin;
+                src: url(WorkSans-Thin.ttf);
+            }
+            *{
+                font-family: WorkSans-Thin;
+                color: black;
+            }
+            body
+            {
+                padding: 0;
+                margin: 0;                
+            }
+            .header
+            {
+                z-index: 1;
+                background: linear-gradient(to right, #AD1457,#6A1B9A);
+                width: 100%;
+                height:15%;
+                position: fixed;
+                top: 0;
+                left: 0;
+            }
+            .header_logo
+            {
+                position: fixed;
+                width: 18%;
+                height: 8%;
+                float: left;
+                margin: 2% 0 0 15%;                
+            }
+            .body
+            {
+                padding: 10% 15% 0% 15%;
+                margin-bottom: 50px;
+            }            
+            .side_menu
+            {
+                float: left;
+                width: 20%;
+                height: auto;
+                border-right: 4px solid #ffe6ff;
+                overflow: scroll;                
+            }
+            .content::-webkit-scrollbar
+            {
+                display: none;
+            }
+            .side_menu::-webkit-scrollbar
+            {
+                display: none;
+            }
+            .brand
+            {
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+                padding-bottom: 10px;
+            }
+            .price
+            {
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.08);            
+                padding-bottom: 10px;
+            }
+            .category
+            {
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.08);            
+                padding-bottom: 10px;
+            }
+            .single_check_option
+            {
+                width:100%;
+                height: 25px;
+                margin-top: 5px;
+                transition: box-shadow 0.5;
+            }
+            .single_check_option:hover
+            {
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+            }
+            .check_box
+            {
+                width:15%;
+                height: 100%;
+                float: left;
+            }
+            .label
+            {
+                width: 70%;
+                height: 100%;
+                padding: 2px 0px 0px 0px;
+                float: right;
+            }
+            .switch 
+            {
+                position: relative;
+                display: inline-block;
+                width: 50px;
+                height: 25px;
+            }
+            .switch input
+            {
+                display:none;
+            }
+            .slider 
+            {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ffe6ff;
+                transition: .5s;
+            }
+            .slider:before 
+            {
+                position: absolute;
+                content: "";
+                height: 20px;
+                width: 20px;
+                left: 5px;
+                bottom: 2.5px;
+                background-color: #76ffff;
+                transition: .5s;
+            }
+            input:checked + .slider 
+            {
+                background: linear-gradient(to right, #AD1457,#6A1B9A);
+            }
+            input:focus + .slider
+            {
+                box-shadow: 0 0 1px #2196F3;
+            }
+            input:checked + .slider:before 
+            {
+                transform: translateX(20px);
+            }
+            .side_menu::-webkit-scrollbar
+            {
+                display: none;
+            }            
+            label
+            {
+                
+                text-transform:uppercase;
+                font-weight:bolder;
+                letter-spacing:1px;
+                font-size:15px;
+            } 
+            .content
+            {                
+                float: right;
+                width: 75%;
+                height: 80%;
+                overflow: scroll;
+            }
+            .content::-webkit-scrollbar
+            {
+                display: none;
+            }            
+            .item
+            {
+                float: left;
+                margin: 1%;
+                width: 23%;
+                height: 40%;
+                transition: box-shadow 0.5;
+            }
+            .item:hover
+            {
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+            .image_container 
+            {
+                position:sticky;
+                float: left;
+                width: 100%;
+                height: auto;
+                padding: 0%;
+                background-color:#ffffff;
+            }
+            .item_image 
+            {
+                opacity: 1;
+                display: block;
+                width: 100%;
+                height: auto;
+                transition: .5s ease;
+            }
+            .middle 
+            {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: #ffe6ff;
+                overflow: hidden;
+                width: 100%;
+                height: 0;
+                transition: .5s ease;
+            }
+            .image_container:hover .middle 
+            {
+                height: 20%;
+            }
+            .text 
+            {
+                color: white;
+                text-align: center;
+                font-size: 16px;
+                padding: 1px;
+            }
+            .item_details
+            {
+                margin: auto;
+                width: 100%;
+                height: auto;
+            }
+            .item_name
+            {
+                width: 100%;
+                text-align: center;
+            }
+            .page
+            {
+                text-align: center;
+            }
+            .pagination 
+            {
+                display: inline-block;
+                margin: auto;
+            }
+            .pagination a 
+            {
+                color: black;
+                float: left;
+                padding: 8px 16px;
+                text-decoration: none;
+            }
+            .pagination a.active 
+            {
+                background: linear-gradient(to right, #AD1457,#6A1B9A);
+                color: white;
+                border-radius: 5px;
+            }
+            .pagination a:hover:not(.active) 
+            {
+                background-color: #ddd;
+                border-radius: 5px;
+            }
+            .footer
+            {
+                background-color:#ffe6ff;
+                width: 100%;
+                height: auto;
+                clear: both;
+                position: relative;
+                z-index: 10;
+                margin-top: 90%;
+                padding: 2% 15% 5% 15%;                
+            }
+            .footer_text 
+            {               
+                column-count: 3;   
+                column-gap: 40px;                
+                column-rule-style: solid;                
+                column-rule-width: 1px;                
+                column-rule-color: lightblue;
+            }
+            .icons
+            {
+                width: 100%;
+                height: auto;
+                b
+                padding: 1px;
+            }
+            .icon_container
+            {
+                width: 100%;
+                height: auto;
+                b
+                padding: 1px;
+                text-align: left;
+            }
+            .icon
+            {
+                width: 50px;
+                height: 50px;
+                margin: 0px 2px 0px 0px;                
+            }
+            .social
+            {
+                width: 100%;
+                height: 70px;
+                display: block;                
+                margin:0 0 0 0;                
+            }
+            .social_icon
+            {
+                width: 50px;
+                height: 50px;
+                margin: 0px 2px 0px 3px;
+            }
+            .cart_icon
+            {
+                width: 38px;
+                height: 38px;
+                margin: 0px 2px 0px 3px;
+            }
+            ul 
+            {
+                list-style-type: none;
+            }
+            li
+            {
+                float: left;
+            }
+            .rights
+            {
+                padding: 1px;
+                width: 100%;
+                height: 70px;
+                margin: 0px 0px 0px 0px;
+            }
+    </style>   
+    </head>
+    <body>
+        <div class="header"><img class="header_logo" src="hermes_our_logo.png"></div>
+        <div class="body">
+            <h2 style="margin: 0 0 5px 25%">Fashion</h2>
+            <div class="side_menu">
+            <div class="brand">
+                <h2 style="margin-bottom: 0px;">Brand</h2>
+                <h3 style="margin-top: 0px; font-size: 12px">Choose your preferences</h3>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Cherokee">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Cherokee"><label for="Cherokee">Cherokee</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Qube">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Qube"><label for="Qube">Qube</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Katso">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Katso"><label for="Katso">Katso</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Fanideaz">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Fanideaz"><label for="Fanideaz">Fanideaz</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Dennis Lingo">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Dennis Lingo"><label for="Dennis Lingo">Dennis Lingo</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Symbol">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Symbol"><label for="Symbol">Symbol</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Pan America">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Pan America"><label for="Pan America">Pan America</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Excalibur">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Excalibur"><label for="Excalibur">Excalibur</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Excalibur">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Excalibur"><label for="Excalibur">Excalibur</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Ghpc">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Ghpc"><label for="Ghpc">Ghpc</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Ben Martin">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Ben Martin"><label for="Ben Martin">Ben Martin</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Urbano">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Urbano"><label for="Urbano">Urbano</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Ben Carter">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Ben Carter"><label for="Ben Carter">Ben Carter</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Clifton">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Clifton"><label for="Clifton">Clifton</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Van Heusen">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Van Heusen"><label for="Van Heusen">Van Heusen</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Ruggers">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Ruggers"><label for="Ruggers">Ruggers</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Clifton Army">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Clifton Army"><label for="Clifton Army">Clifton Army</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Tadelloz">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Tadelloz"><label for="Tadelloz">Tadelloz</label></div>
+                </div>
+            </div>
+            <div class="price">
+                <h2 style="margin-bottom: 0px;">Price</h2>
+                <h3 style="margin-top: 0px; font-size: 12px">Choose your preferences</h3>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Below 500">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Below 500"><label for="Below 500">Below 500</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="500-1000">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="500-1000"><label for="500-1000">500-1000</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="1000-1500">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="1000-1500"><label for="1000-1500">1000-1500</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="1500-2000">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="1500-2000"><label for="1500-2000">1500-2000</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Above 2000">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Above 2000"><label for="Above 2000">Above 2000</label></div>
+                </div> 
+            </div>
+            <div class="category">
+                <h2 style="margin-bottom: 0px;">Category</h2>
+                <h3 style="margin-top: 0px; font-size: 12px">Choose your preferences</h3>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Tshirt">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Tshirt"><label for="Tshirt">Tshirt</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Shirt">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Shirt"><label for="Shirt">Shirt</label></div>
+                </div> 
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Jean">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Jean"><label for="Jean">Jean</label></div>
+                </div>
+                <div class="single_check_option">
+                    <div class="check_box">
+                        <label class="switch">
+                            <input type="checkbox" id="Short">
+                            <span class="slider"></span>
+                        </label></div>
+                    <div class="label" for="Short"><label for="Short">Short</label></div>
+                </div>
+            </div>
+        </div>            
+            <div class="content">
+                <div>
+                    <div class="item">
+                        <div class="image_container">
+                          <img src="tshirt.jpg" alt="Puma T-Shirt" class="item_image">
+                          <div class="middle">
+                            <div class="text"><button style="width: 100%;height: 100%;background-color: #ffe6ff;"><img class="cart_icon" src="cartr.png"></button></div>
+                          </div>
+                        </div>
+                        <div class="item_details">
+                            <div class="item_name">
+                                <strong style="margin-bottom: 0px; margin: auto;">Company</strong><p style="margin-bottom: 0px;margin: auto;">Model</p><strike style="margin-top: 0px; margin: auto;">Price</strike><strong style="margin-top: 0px; margin: auto;"> Offered</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!--<div class="page">
+                    <div class="pagination">
+                        <a href="#">&laquo;</a>
+                        <a href="#"  class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#">6</a>
+                        <a href="#">&raquo;</a>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer_text">
+                <h2 style="column-span: all; text-align: center;">Shop for All Types Fahion</h2>
+                <p>The button-down is perhaps the most timeless piece in a man's closet. Men's formal shirts have played a pivotal role in their wardrobe for as long as fashion forecasters and followers can remember. A crisp, white formal shirt for men goes seamlessly beneath a blazer or suit jacket, completing your outfit for a fancy night out. You might also pick up a formal shirt with a special occasion in mind, such as a business dinner or wedding reception. Invest in a formal shirt in a neutral tone like white or black for a timeless get-up. Even blue formal shirts for men are evergreen. Wear them with a pair of khaki pants for an eye-popping appearance. </p>
+                <h3>Tshirts: The Choice of Today's Generation!</h3>
+                <p>Stack your wardrobe with a brand new pair of jeans to revamp your daily style with minimal effort. Irrespective of your age, location, vocation, and style there's always a pair of well-fitted, dark jeans for men to swing you from a sedate setting to a plush one. Go from being the best-dressed guy at the book reading club in a black polo T-shirt and blue denim jeans for men to the cool guy watching a play at the open-air theater. Add a pair of mirrored sunglasses, a pair of red loafers, some citrus cologne, and attract admiring glances while you watch the play with rapt attention. Flaunt an edgy cool look, and your inner hip-hop star by wearing your faded relaxed pair chosen from the trendy array of latest jeans for men online. Sport this with a comfortable red and blue athletic T-shirt and a black digital watch. Wear a baseball cap and a pair of white sneakers. </p>
+                <h3>Casual Tshirts</h3>
+                <p>Want to look strikingly fashionable while going out with friends on the weekend? Men's polo T-shirts are a good choice as these can be paired with jeans or trousers to look cool and feel comfortable. Choose a sky blue and navy polo T-shirt and team it up with beige tapered trousers and brown suede loafers for a casual look. You can wear men's casual T-shirts while going on a work trip with your colleagues. Showcase your fine taste in clothing by sporting a grey printed T-shirt complemented with jeans, leather shoes, and shades to maximise the effect. The timeless appeal of T-shirts makes them must-have attire for every man. You can choose an off-white striped T-shirt, and pair it up with jeans and slippers to look your best while at home.
+                <br>
+               </p><br>
+                <div class="icons">
+                    <div class="icon_container">
+                        <img class="icon" src="original.png">
+                        <p style="float: right; width: 80%; margin:1px 0px 1px 2px;"><strong>100% ORIGINAL </strong>guarantee for all products at our store</p>
+                    </div>
+                    <div class="icon_container">
+                        <img class="icon" src="30day.png">
+                        <p style="float: right; width: 80%; margin:1px 0px 1px 2px;"><strong>Return within 30days </strong>of placing your order</p>
+                    </div>
+                    <div class="icon_container">
+                        <img class="icon" src="free%20delivery.png">
+                        <p style="float: right; width: 80%; margin:1px 0px 1px 2px;"><strong>Get free delivery </strong>for every order above Rs.1199</p>
+                    </div>
+                </div>
+            </div>
+            <div class="social">
+                <ul>
+                    <li><strong><br>Stay Connected </strong></li>
+                    <li><a href="https://www.facebook.com/" target="_blank"><img class="social_icon" src="fb.png"></a></li>
+                    <li><a href="https://www.instagram.com/?hl=en" target="_blank"><img class="social_icon" src="insta.png"></a></li>
+                    <li><a href="https://twitter.com/login" target="_blank"><img class="social_icon" src="twi.png"></a></li>
+                    <li><a href="https://in.pinterest.com/" target="_blank"><img class="social_icon" src="pin.png"></a></li>
+                </ul>
+            </div>
+            <div class="rights"><p style="float: left;">In case of any concern, <strong>Contact Us</strong></p><p style="float: right;">© 2017 Hermes. All rights reserved.</p></div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,134 @@
+<html>
+    <head>
+        <title>Hermes</title>
+    <link rel="stylesheet" type="text/css" href="homepagestyle.css">
+         <script src="homepagesript.js"></script> 
+    </head>
+<!-- Header -->
+    <div id="header">
+    <header>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+    <form action="searchresult.php" method="GET">
+        <input type="text" placeholder="Search Here" name="search">
+        <input type="submit" value="Search">
+    </form>
+    <img src="hermes_our_logo.png" alt="Hermes">
+    <a href="login.html" alt="Login"><input class="button" type="button" value="Login" ></a>
+    </header>
+    </div>
+    
+      <!-- NAV -->
+   
+    <div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="Homepage.html">Homepage</a>
+  <a href="fashion.html">Fashion</a>
+  <a href="bags.html">Bags</a>
+  <a href="shoes.php">Shoes</a>
+  <a href="laptop.html">Laptop</a>
+  <a href="mobile.html">Mobile</a>
+  <a href="#">Cart</a>
+  <a href="Login.html">Login</a>
+  <a href="#">Terms & Conditions</a>
+</div>
+    
+    
+    <!-- SLIDE SHOW-->
+<div class="slideshow-container">
+
+<div class="mySlides fade" style="display: block">
+  <div class="numbertext">1 / 3</div>
+  <img src="banner1.jpg" style="width:100%">
+  <div class="text">Get Your Groove On</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="banner2.jpg" style="width:100%">
+  <div class="text">Bet the Gentleman</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src="banner3.jpg" style="width:100%">
+  <div class="text">The Shopoholics's Delight</div>
+</div>
+<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+</div>
+      <!-- OFFER ZONE-->
+<div class="offer">
+    <span>Offer Zone</span>
+    <img src="bottom1.jpg">
+    <img src="bottom2.jpg">
+    <img src="bottom3.jpg">
+</div>
+  <!-- PRODUCTS-->
+<div class="prodcontainer" >
+    <div class="prodbox">
+    <img src="S1.jpg"style="width:100%;height:267px;">
+    <div class="overlay">
+  <div class="desc">Premium Cloathing<br><br><a href="fashion.html" class="tdecor"> <input type="button" value="Shop Now" class="shop_btn"></a></div>
+</div>     
+    </div>
+    <div class="prodbox" >
+    <img src="L1.jpg"style="width:100%;height:267px;">
+    <div class="overlay">
+  <div class="desc">Premium Laptops<br><br><a href="laptop.html" class="tdecor"><input type="button" value="Shop Now" class="shop_btn"></a></div>
+</div>
+    </div>
+        <div class="prodbox" >
+    <img src="SH1.jpg"style="width:100%;height:267px;">
+    <div class="overlay">
+  <div class="desc">Premium Footwear<br><br><a href="shoes.php" class="tdecor"><input type="button" value="Shop Now" class="shop_btn"></a></div>
+</div>
+        </div>
+            <div class="prodbox" >
+    <img src="B6.jpg" style="width:100%;height:267px;">
+    <div class="overlay">
+  <div class="desc">Premium Accessories<br><br><a href="bags.html" class="tdecor"><input type="button" value="Shop Now" class="shop_btn"></a></div>
+</div>
+            </div>
+                <div class="prodbox" >
+    <img src="M8.jpg"style="width:100%;height:267px;">
+    <div class="overlay">
+  <div class="desc">Premium Mobiles<br><br><a href="mobile.html" class="tdecor"><input type="button" value="Shop Now" class="shop_btn"></a></div>
+</div>
+</div>
+</div>
+
+ <!--FOOTER -->
+<div class="footer">
+<footer>
+<div class="column">
+<h2>About Us</h2>
+<p>We live in the 21st centery and here we phaadh people need to buy stuff online. 
+    So we ultra phaadh people came up with a site where normal phaadh people and G ,
+    can buy stuff and chill out.</p>
+<img src="fb.png">
+<img src="insta.png">
+<img src="twi.png">
+<img src="pin.png">
+</div>
+<div class="column">
+    <h2>Our Guarantee</h2>
+    <p>We are so phaadh that you dont even need a guarantee. We will deliver amazing stuff to you toally free of cost and you will just fall in love with us. </p>
+<img src="freedelivery.png">
+<img src="30day.png">
+     </div>
+<div class="column">
+    <h2>Subscribe</h2>
+<p>Subscribe to our amazing page to get the latest updates on our amazing collection of clothes and ultimate offer's and discounts.</p>
+<input type="text" placeholder="Enter your email address" class="subscribe">
+<input type="submit" value="Subscribe" class=" subscribe_btn">
+</div>
+</footer>
+</div>
+</html>
